@@ -1,10 +1,5 @@
 export type Section =
-  | "Hortifruti"
-  | "Padaria"
-  | "Geladeira"
-  | "Mercearia"
-  | "Preparo caseiro"
-  | "Itens de apoio";
+  "Hortifruti" | "Padaria" | "Geladeira" | "Mercearia" | "Preparo caseiro" | "Itens de apoio";
 
 export const SECTIONS: Section[] = [
   "Hortifruti",
@@ -43,7 +38,16 @@ const rules: { section: Section; words: string[] }[] = [
   },
   {
     section: "Padaria",
-    words: ["pão", "pãezinho", "pãozinho", "tortilha", "torrad", "sírio", "bolo caseiro", "biscoito caseiro"],
+    words: [
+      "pão",
+      "pãezinho",
+      "pãozinho",
+      "tortilha",
+      "torrad",
+      "sírio",
+      "bolo caseiro",
+      "biscoito caseiro",
+    ],
   },
   {
     section: "Geladeira",
@@ -109,7 +113,10 @@ export function sectionFor(item: string): Section {
 const stripQuantity = (item: string) =>
   item
     .replace(/^\d+([.,]\d+)?\s*/i, "")
-    .replace(/^(g|kg|ml|l|xícaras?|xícara|colheres?|colher|fatias?|latas?|punhados?|unidades?|cachos?|rodelas?|potinhos?)\s+(de\s+)?/i, "")
+    .replace(
+      /^(g|kg|ml|l|xícaras?|xícara|colheres?|colher|fatias?|latas?|punhados?|unidades?|cachos?|rodelas?|potinhos?)\s+(de\s+)?/i,
+      "",
+    )
     .replace(/^(de\s+)/i, "")
     .trim();
 

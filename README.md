@@ -46,6 +46,7 @@ IDENTIDADE VISUAL
 Criar uma estética alegre, leve, organizada e acolhedora.
 
 Paleta:
+
 - creme claro como fundo;
 - verde sálvia;
 - amarelo manteiga;
@@ -54,6 +55,7 @@ Paleta:
 - texto em cinza escuro.
 
 Tipografia:
+
 - títulos arredondados, fortes e amigáveis;
 - textos simples, bem espaçados e muito legíveis no celular;
 - não usar fontes infantis exageradas;

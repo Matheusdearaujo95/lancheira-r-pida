@@ -4,12 +4,15 @@ import { ComboCard } from "@/components/ComboCard";
 import { BackButton, Disclaimer, PageHeader } from "@/components/PageHeader";
 import { InfoTip } from "@/components/InfoTip";
 
-type Search = { filtro?: string };
+type Search = { filtro?: string | undefined };
 
 export const Route = createFileRoute("/combinacoes/")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    filtro: typeof search.filtro === "string" ? search.filtro : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search => {
+    const rawFiltro = search["filtro"];
+    return {
+      filtro: typeof rawFiltro === "string" ? rawFiltro : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title: "36 combinações para a lancheira | Lancheira que Não Volta Inteira" },
@@ -30,12 +33,16 @@ export const Route = createFileRoute("/combinacoes/")({
 
 function Combinacoes() {
   const { filtro } = Route.useSearch();
-  const navigate = useNavigate({ from: "/combinacoes" });
+  const navigate = useNavigate();
 
   const lista = filtro ? combos.filter((c) => (c.tags as string[]).includes(filtro)) : combos;
 
-  const setFiltro = (t?: string) =>
-    navigate({ search: t && t !== filtro ? { filtro: t } : {} });
+  const setFiltro = (t?: string) => {
+    navigate({
+      to: "/combinacoes",
+      search: t && t !== filtro ? { filtro: t } : {},
+    });
+  };
 
   const extra: Tag[] = filtro === "Poucos ingredientes" ? ["Poucos ingredientes"] : [];
 
@@ -54,7 +61,9 @@ function Combinacoes() {
           type="button"
           onClick={() => setFiltro(undefined)}
           className={`min-h-11 rounded-full px-4 text-sm font-semibold ${
-            filtro ? "bg-card text-foreground/70 shadow-soft" : "bg-secondary text-secondary-foreground"
+            filtro
+              ? "bg-card text-foreground/70 shadow-soft"
+              : "bg-secondary text-secondary-foreground"
           }`}
         >
           Ver todas
@@ -65,7 +74,9 @@ function Combinacoes() {
             type="button"
             onClick={() => setFiltro(t)}
             className={`min-h-11 rounded-full px-4 text-sm font-semibold ${
-              filtro === t ? "bg-secondary text-secondary-foreground" : "bg-card text-foreground/70 shadow-soft"
+              filtro === t
+                ? "bg-secondary text-secondary-foreground"
+                : "bg-card text-foreground/70 shadow-soft"
             }`}
           >
             {t === "5 min" ? "5 minutos" : t}

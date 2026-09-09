@@ -84,4 +84,4 @@ export const guias: Guia[] = [
   },
 ];
 
-export const guiaImage = (slug: string) => `/images/guias/${slug}.jpg`;
+export const guiaImage = (slug: string) => `/images/guias/${slug}.svg`;

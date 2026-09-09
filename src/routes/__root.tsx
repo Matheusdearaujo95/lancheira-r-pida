@@ -88,7 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Lancheira que Não Volta Inteira" },
       {
         property: "og:description",
-        content: "36 combinações simples para a lancheira da escola, com lista de compras e guias rápidos.",
+        content:
+          "36 combinações simples para a lancheira da escola, com lista de compras e guias rápidos.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -142,4 +143,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

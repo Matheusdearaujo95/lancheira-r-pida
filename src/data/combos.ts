@@ -58,7 +58,8 @@ const raw: Raw[] = [
       "Lave a uva, seque e coloque em um potinho fechado.",
     ],
     prepAhead: "Deixe a uva já lavada e seca na geladeira no domingo. De manhã é só montar o pão.",
-    swaps: "Se não tiver uva, use maçã em gomos ou melão em cubos. Vale a fruta que estiver boa na sua casa.",
+    swaps:
+      "Se não tiver uva, use maçã em gomos ou melão em cubos. Vale a fruta que estiver boa na sua casa.",
     remember: "Garrafinha de água, guardanapo e gelo reutilizável.",
   },
   {
@@ -68,11 +69,7 @@ const raw: Raw[] = [
     portions: "1 criança",
     summary: "Sai do congelador para o forno enquanto você arruma a mochila.",
     tags: ["5 min", "Salgado caseiro", "Com fruta", "Poucos ingredientes"],
-    ingredients: [
-      "4 pães de queijo congelados",
-      "1 banana pequena",
-      "1 água de coco em caixinha",
-    ],
+    ingredients: ["4 pães de queijo congelados", "1 banana pequena", "1 água de coco em caixinha"],
     steps: [
       "Asse os pães de queijo enquanto prepara o resto da mochila.",
       "Deixe esfriar um pouco antes de guardar para não criar vapor no pote.",
@@ -102,7 +99,8 @@ const raw: Raw[] = [
       "Embrule cada metade em papel manteiga e feche com fita.",
     ],
     prepAhead: "O frango pode ser cozido e desfiado no domingo, guardado em pote na geladeira.",
-    swaps: "Frango pode virar queijo ou ovo cozido amassado. Cenoura pode virar pepino em tirinhas.",
+    swaps:
+      "Frango pode virar queijo ou ovo cozido amassado. Cenoura pode virar pepino em tirinhas.",
     remember: "Gelo reutilizável, garrafinha e potinho para o tomate.",
   },
   {
@@ -123,7 +121,8 @@ const raw: Raw[] = [
       "Corte os morangos ao meio e leve em potinho separado.",
     ],
     prepAhead: "Deixe os morangos lavados e cortados na noite anterior, em pote fechado.",
-    swaps: "Se não tiver morango, use outra fruta que esteja boa na sua casa. A ideia é facilitar a rotina, não criar mais uma regra.",
+    swaps:
+      "Se não tiver morango, use outra fruta que esteja boa na sua casa. A ideia é facilitar a rotina, não criar mais uma regra.",
     remember: "Gelo reutilizável, garfinho pequeno e guardanapo.",
   },
   {
@@ -133,12 +132,7 @@ const raw: Raw[] = [
     portions: "1 criança",
     summary: "Ovo mexido bem seco no pãozinho, do jeito que não vaza.",
     tags: ["5 min", "Salgado caseiro", "Com fruta"],
-    ingredients: [
-      "1 pãozinho pequeno",
-      "1 ovo",
-      "Pitada de sal",
-      "1 maçã pequena",
-    ],
+    ingredients: ["1 pãozinho pequeno", "1 ovo", "Pitada de sal", "1 maçã pequena"],
     steps: [
       "Mexa o ovo em fogo baixo até ficar bem seco.",
       "Recheie o pãozinho e deixe esfriar dois minutos.",
@@ -155,11 +149,7 @@ const raw: Raw[] = [
     portions: "1 criança",
     summary: "Três potinhos pequenos que ela mistura na hora do intervalo.",
     tags: ["5 min", "Doce caseiro", "Com fruta", "Para dividir em potinhos", "Poucos ingredientes"],
-    ingredients: [
-      "1 iogurte natural ou de fruta",
-      "2 colheres de aveia em flocos",
-      "1 banana",
-    ],
+    ingredients: ["1 iogurte natural ou de fruta", "2 colheres de aveia em flocos", "1 banana"],
     steps: [
       "Coloque o iogurte em um pote com boa tampa.",
       "Leve a aveia em um potinho separado para não murchar.",
@@ -208,7 +198,8 @@ const raw: Raw[] = [
       "Separe os biscoitos em outro pote para não umedecer.",
       "Complete com a maçã inteira e a garrafinha.",
     ],
-    prepAhead: "Os biscoitos caseiros podem ser feitos no fim de semana e guardados em vidro fechado.",
+    prepAhead:
+      "Os biscoitos caseiros podem ser feitos no fim de semana e guardados em vidro fechado.",
     swaps: "Maçã pode virar pera. Biscoito caseiro pode virar torradinha.",
     remember: "Gelo reutilizável e guardanapo.",
   },
@@ -264,11 +255,7 @@ const raw: Raw[] = [
     portions: "1 criança",
     summary: "Doce caseiro rápido que ela come enrolado.",
     tags: ["5 min", "Doce caseiro", "Com fruta", "Poucos ingredientes"],
-    ingredients: [
-      "2 panquecas prontas ou congeladas",
-      "1 banana amassada",
-      "Canela em pó",
-    ],
+    ingredients: ["2 panquecas prontas ou congeladas", "1 banana amassada", "Canela em pó"],
     steps: [
       "Aqueça a panqueca rapidamente na frigideira.",
       "Espalhe a banana amassada com canela e enrole.",
@@ -813,7 +800,7 @@ export const combos: Combo[] = raw.map((c, i) => ({
   slug: slugify(c.name),
 }));
 
-export const comboImage = (id: number) => `/images/combos/combo-${id}.jpg`;
+export const comboImage = (id: number) => `/images/combos/combo-${id}.svg`;
 
 export const FILTERS: Tag[] = [
   "5 min",

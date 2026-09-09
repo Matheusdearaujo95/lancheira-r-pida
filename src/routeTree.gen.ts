@@ -10,12 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComprasRouteImport } from './routes/compras'
+import { Route as GuiaRouteImport } from './routes/guia'
+import { Route as SemanaRouteImport } from './routes/semana'
 import { Route as CombinacoesIndexRouteImport } from './routes/combinacoes.index'
 import { Route as CombinacoesSlugRouteImport } from './routes/combinacoes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComprasRoute = ComprasRouteImport.update({
+  id: '/compras',
+  path: '/compras',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaRoute = GuiaRouteImport.update({
+  id: '/guia',
+  path: '/guia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SemanaRoute = SemanaRouteImport.update({
+  id: '/semana',
+  path: '/semana',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CombinacoesIndexRoute = CombinacoesIndexRouteImport.update({
@@ -31,30 +49,61 @@ const CombinacoesSlugRoute = CombinacoesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/compras': typeof ComprasRoute
+  '/guia': typeof GuiaRoute
+  '/semana': typeof SemanaRoute
   '/combinacoes/$slug': typeof CombinacoesSlugRoute
   '/combinacoes/': typeof CombinacoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/compras': typeof ComprasRoute
+  '/guia': typeof GuiaRoute
+  '/semana': typeof SemanaRoute
   '/combinacoes/$slug': typeof CombinacoesSlugRoute
   '/combinacoes': typeof CombinacoesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/compras': typeof ComprasRoute
+  '/guia': typeof GuiaRoute
+  '/semana': typeof SemanaRoute
   '/combinacoes/$slug': typeof CombinacoesSlugRoute
   '/combinacoes/': typeof CombinacoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/combinacoes/$slug' | '/combinacoes/'
+  fullPaths:
+    | '/'
+    | '/compras'
+    | '/guia'
+    | '/semana'
+    | '/combinacoes/$slug'
+    | '/combinacoes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/combinacoes/$slug' | '/combinacoes'
-  id: '__root__' | '/' | '/combinacoes/$slug' | '/combinacoes/'
+  to:
+    | '/'
+    | '/compras'
+    | '/guia'
+    | '/semana'
+    | '/combinacoes/$slug'
+    | '/combinacoes'
+  id:
+    | '__root__'
+    | '/'
+    | '/compras'
+    | '/guia'
+    | '/semana'
+    | '/combinacoes/$slug'
+    | '/combinacoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComprasRoute: typeof ComprasRoute
+  GuiaRoute: typeof GuiaRoute
+  SemanaRoute: typeof SemanaRoute
   CombinacoesSlugRoute: typeof CombinacoesSlugRoute
   CombinacoesIndexRoute: typeof CombinacoesIndexRoute
 }
@@ -66,6 +115,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compras': {
+      id: '/compras'
+      path: '/compras'
+      fullPath: '/compras'
+      preLoaderRoute: typeof ComprasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia': {
+      id: '/guia'
+      path: '/guia'
+      fullPath: '/guia'
+      preLoaderRoute: typeof GuiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/semana': {
+      id: '/semana'
+      path: '/semana'
+      fullPath: '/semana'
+      preLoaderRoute: typeof SemanaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/combinacoes/': {
@@ -87,6 +157,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComprasRoute: ComprasRoute,
+  GuiaRoute: GuiaRoute,
+  SemanaRoute: SemanaRoute,
   CombinacoesSlugRoute: CombinacoesSlugRoute,
   CombinacoesIndexRoute: CombinacoesIndexRoute,
 }

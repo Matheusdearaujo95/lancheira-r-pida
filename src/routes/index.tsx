@@ -1,6 +1,14 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Timer, CalendarCheck, Cookie, Sandwich, ThermometerSnowflake, Home, Dice5 } from "lucide-react";
+import {
+  Timer,
+  CalendarCheck,
+  Cookie,
+  Sandwich,
+  ThermometerSnowflake,
+  Home,
+  Dice5,
+} from "lucide-react";
 import { combos, comboImage, DISCLAIMER, type Tag } from "@/data/combos";
 import { ComboCard } from "@/components/ComboCard";
 import { Disclaimer, PageHeader } from "@/components/PageHeader";
@@ -27,19 +35,34 @@ export const Route = createFileRoute("/")({
 
 const situacoes: { label: string; tag: Tag; Icon: typeof Timer; bg: string }[] = [
   { label: "Tenho 5 minutos", tag: "5 min", Icon: Timer, bg: "bg-coral-soft" },
-  { label: "Quero deixar pronto antes", tag: "Preparar antes", Icon: CalendarCheck, bg: "bg-sage-soft" },
+  {
+    label: "Quero deixar pronto antes",
+    tag: "Preparar antes",
+    Icon: CalendarCheck,
+    bg: "bg-sage-soft",
+  },
   { label: "Preciso de opção doce", tag: "Doce caseiro", Icon: Cookie, bg: "bg-butter-soft" },
   { label: "Preciso de opção salgada", tag: "Salgado caseiro", Icon: Sandwich, bg: "bg-sky-soft" },
-  { label: "Quero lanche sem geladeira", tag: "Sem geladeira", Icon: ThermometerSnowflake, bg: "bg-sage-soft" },
-  { label: "Quero usar o que já tenho em casa", tag: "Poucos ingredientes", Icon: Home, bg: "bg-butter-soft" },
+  {
+    label: "Quero lanche sem geladeira",
+    tag: "Sem geladeira",
+    Icon: ThermometerSnowflake,
+    bg: "bg-sage-soft",
+  },
+  {
+    label: "Quero usar o que já tenho em casa",
+    tag: "Poucos ingredientes",
+    Icon: Home,
+    bg: "bg-butter-soft",
+  },
 ];
 
-const destaques = [combos[0], combos[14], combos[26]];
+const destaques = combos.filter((c) => c.id === 1 || c.id === 15 || c.id === 27);
 
 function Hoje() {
   const navigate = useNavigate();
   const [sorteada, setSorteada] = useState<number | null>(null);
-  const sorteio = sorteada === null ? null : combos[sorteada];
+  const sorteio = sorteada !== null ? (combos[sorteada] ?? null) : null;
 
   return (
     <main>
@@ -49,6 +72,15 @@ function Hoje() {
       >
         <p className="mt-1 text-sm font-semibold text-secondary">Lancheira que Não Volta Inteira</p>
       </PageHeader>
+
+      <div className="mt-4 overflow-hidden rounded-3xl border border-border shadow-soft">
+        <img
+          src="/images/hero-lancheira.svg"
+          alt="Lancheira aberta, organizada e colorida com frutas, sanduíche simples, potinhos e garrafinha"
+          className="h-48 w-full object-cover sm:h-56"
+          loading="eager"
+        />
+      </div>
 
       <section className="mt-6 grid grid-cols-2 gap-3" aria-label="Situações da manhã">
         {situacoes.map(({ label, tag, Icon, bg }) => (
