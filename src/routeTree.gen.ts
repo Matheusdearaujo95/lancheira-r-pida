@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CombinacoesIndexRouteImport } from './routes/combinacoes.index'
+import { Route as CombinacoesSlugRouteImport } from './routes/combinacoes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CombinacoesIndexRoute = CombinacoesIndexRouteImport.update({
+  id: '/combinacoes/',
+  path: '/combinacoes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CombinacoesSlugRoute = CombinacoesSlugRouteImport.update({
+  id: '/combinacoes/$slug',
+  path: '/combinacoes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/combinacoes/$slug': typeof CombinacoesSlugRoute
+  '/combinacoes/': typeof CombinacoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/combinacoes/$slug': typeof CombinacoesSlugRoute
+  '/combinacoes': typeof CombinacoesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/combinacoes/$slug': typeof CombinacoesSlugRoute
+  '/combinacoes/': typeof CombinacoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/combinacoes/$slug' | '/combinacoes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/combinacoes/$slug' | '/combinacoes'
+  id: '__root__' | '/' | '/combinacoes/$slug' | '/combinacoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CombinacoesSlugRoute: typeof CombinacoesSlugRoute
+  CombinacoesIndexRoute: typeof CombinacoesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/combinacoes/': {
+      id: '/combinacoes/'
+      path: '/combinacoes'
+      fullPath: '/combinacoes/'
+      preLoaderRoute: typeof CombinacoesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/combinacoes/$slug': {
+      id: '/combinacoes/$slug'
+      path: '/combinacoes/$slug'
+      fullPath: '/combinacoes/$slug'
+      preLoaderRoute: typeof CombinacoesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CombinacoesSlugRoute: CombinacoesSlugRoute,
+  CombinacoesIndexRoute: CombinacoesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
