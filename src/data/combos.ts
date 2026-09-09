@@ -621,7 +621,7 @@ const raw: Raw[] = [
     tags: ["Sem geladeira", "Doce caseiro", "Com fruta"],
     ingredients: ["6 biscoitos caseiros de aveia", "1 pera", "1 suco de fruta em caixinha"],
     steps: [
-      "Separe os biscoitos em pote pequeño e firme.",
+      "Separe os biscoitos em pote pequeno e firme.",
       "Lave e seque a pera, mande inteira.",
       "Coloque o suco no bolso lateral da lancheira.",
     ],
